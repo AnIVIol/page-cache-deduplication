@@ -1,7 +1,7 @@
 /*
  * gen_files.c — multi-file generator with controllable redundancy.
  *
- * Same core logic as generate.c (shuffle / fill_random / page-group
+ * Same core logic as gen_dedup.c and generate.c in other test suites (shuffle / fill_random / page-group
  * marking). Adds:
  *   - num_files: how many files to write into <output_dir>
  *   - groups:    keep the groups feature from generate.c
