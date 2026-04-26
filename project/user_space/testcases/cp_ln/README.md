@@ -1,4 +1,3 @@
-```markdown
 # `cp_ln` — Copy & Link Test Suite for Page Cache Deduplication
 
 This directory contains correctness tests focused on how the page-cache
