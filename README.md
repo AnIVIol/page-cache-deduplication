@@ -14,7 +14,7 @@ This artifact implements a page-cache deduplication mechanism in the Linux Kerne
 - **`project/user_space/`**: Testing and benchmarking suite.
     - **`manual_testing/`**: Utilities for step-by-step verification (`generate_files`, `write_offset`, `write_test`).
     - **`testcases/`**: Automated functional scripts (`cp_ln`, `fio_scripts`). There is a [README](project/user_space/testcases/README.md) in this directory
-    - **`benchmarks/`**: Performance measurement suites.
+    - **`benchmarks/`**: Performance measurement suites. There is a README in each benchmark suite folder inside this directory.
         - `profiling_and_filebench/`: Benchmarks using Filebench and CPU profiling.
         - `read_write_mem/`: Targeted memory savings and I/O latency benchmarks.
         - `truncate/`: Benchmarks for file truncation performance.
