@@ -8,7 +8,7 @@ FILE_A="$PWD/survivor.dat"
 FILE_B="$PWD/victim.dat"
 SCANNER_SYSFS="/sys/kernel/dedup_scanner/scan_file"
 
-echo "=== 1. Creating 50MB Test Files ==="
+echo "=== 1. Creating 500MB Test Files ==="
 # Write random data to the survivor, then strictly copy it to the victim
 dd if=/dev/urandom of="$FILE_A" bs=1M count=500 status=none
 cp "$FILE_A" "$FILE_B"
