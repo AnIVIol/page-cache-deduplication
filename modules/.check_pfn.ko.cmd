@@ -1,1 +1,0 @@
-cmd_/home/cs614/project/modules/check_pfn.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/cs614/project/modules/check_pfn.ko /home/cs614/project/modules/check_pfn.o /home/cs614/project/modules/check_pfn.mod.o;  true

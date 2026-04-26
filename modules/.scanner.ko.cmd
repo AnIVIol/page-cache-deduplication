@@ -1,1 +1,0 @@
-cmd_/home/cs614/project/modules/scanner.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/cs614/project/modules/scanner.ko /home/cs614/project/modules/scanner.o /home/cs614/project/modules/scanner.mod.o;  true

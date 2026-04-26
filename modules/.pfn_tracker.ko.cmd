@@ -1,1 +1,0 @@
-cmd_/home/cs614/project/modules/pfn_tracker.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/cs614/project/modules/pfn_tracker.ko /home/cs614/project/modules/pfn_tracker.o /home/cs614/project/modules/pfn_tracker.mod.o;  true
