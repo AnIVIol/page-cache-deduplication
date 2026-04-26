@@ -118,3 +118,7 @@ Verify basic functionality within 30 minutes using these manual steps:
  6. **Verify Other Functionalities**:
 - truncate, symlink, cp, echo 3 can also be directly verified.
 ---
+
+## Credits
+
+We have taken help from claude in writing READMEs for describing the testcases and benchmarks
