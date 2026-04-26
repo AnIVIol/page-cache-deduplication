@@ -1,0 +1,10 @@
+Project Group: Torvalds Fanclub
+Members:
+220065 - 15%
+220163 - 15%
+220788 - 40%
+221021 - 15%
+221223 - 15%
+
+All project members own and give their consent on everything submitted as part of this submission. The work done and submitted in the project are done by the members of the project group mentioned above. Any use of external sources such as source code from other repositories, GPT generated source code/documentation/Figures etc. are properly attributed.
+
