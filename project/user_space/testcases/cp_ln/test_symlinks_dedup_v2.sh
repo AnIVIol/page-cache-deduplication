@@ -338,7 +338,6 @@ mkdir -p "$TEST_DIR"
 } | tee "$LOG_FILE"
 
 # --- Final Cleanup ---
-echo
 echo "=== Cleanup ==="
 rm -f "$FILE1" "$FILE2" "$FILE3" "$SYMLINK1" "$SYMLINK2" "$SYMLINK_CHAIN"
 rm -rf "$TEST_DIR"

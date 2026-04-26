@@ -1,0 +1,18 @@
+Filebench Version 1.4.9.1
+11757: 0.000: Allocated 170MB of shared memory
+11757: 0.001: Creating/pre-allocating files and filesets
+11757: 0.001: Fileset writeset: 100 files, 0 leafdirs, avg dir width = 10, avg dir depth = 2.0, 97.553MB
+11757: 0.001: Re-using fileset writeset.
+11757: 0.001: Creating fileset writeset...
+11757: 0.242: Preallocated 100 of 100 of fileset writeset in 1 seconds
+11757: 0.242: waiting for fileset pre-allocation to finish
+11759: 0.242: Starting 1 writer instances
+11760: 0.244: Starting 8 writerthread threads
+11757: 1.245: Running...
+11757: 31.252: Run took 30 seconds...
+11757: 31.252: Per-Operation Breakdown
+close1               902027ops    30061ops/s   0.0mb/s      0.0ms/op      107us/op-cpu [0ms - 15ms]
+append1              902028ops    30061ops/s  58.7mb/s      0.0ms/op      181us/op-cpu [0ms - 25ms]
+open1                902034ops    30061ops/s   0.0mb/s      0.0ms/op      137us/op-cpu [0ms - 36ms]
+11757: 31.252: IO Summary: 2706089 ops, 90181.783 ops/s, (0/30061 r/w),  58.7mb/s,    132us cpu/op,   0.0ms latency
+11757: 31.252: Shutting down processes

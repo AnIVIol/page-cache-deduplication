@@ -1,0 +1,18 @@
+Filebench Version 1.4.9.1
+ 6003: 0.000: Allocated 170MB of shared memory
+ 6003: 0.001: Creating/pre-allocating files and filesets
+ 6003: 0.001: Fileset readset: 100 files, 0 leafdirs, avg dir width = 10, avg dir depth = 2.0, 97.553MB
+ 6003: 0.001: Re-using fileset readset.
+ 6003: 0.001: Creating fileset readset...
+ 6003: 0.051: Preallocated 100 of 100 of fileset readset in 1 seconds
+ 6003: 0.051: waiting for fileset pre-allocation to finish
+ 6005: 0.052: Starting 1 reader instances
+ 6006: 0.053: Starting 8 readerthread threads
+ 6003: 1.055: Running...
+ 6003: 31.057: Run took 30 seconds...
+ 6003: 31.057: Per-Operation Breakdown
+close1               402416ops    13413ops/s   0.0mb/s      0.0ms/op      131us/op-cpu [0ms - 11ms]
+read1                402416ops    13413ops/s 13085.1mb/s      0.4ms/op     1701us/op-cpu [0ms - 27ms]
+open1                402421ops    13413ops/s   0.0mb/s      0.0ms/op      156us/op-cpu [0ms - 13ms]
+ 6003: 31.057: IO Summary: 1207253 ops, 40238.633 ops/s, (13413/0 r/w), 13085.1mb/s,    298us cpu/op,   0.4ms latency
+ 6003: 31.057: Shutting down processes

@@ -1,0 +1,18 @@
+Filebench Version 1.4.9.1
+ 9404: 0.000: Allocated 170MB of shared memory
+ 9404: 0.001: Creating/pre-allocating files and filesets
+ 9404: 0.001: Fileset readset: 100 files, 0 leafdirs, avg dir width = 10, avg dir depth = 2.0, 97.553MB
+ 9404: 0.001: Re-using fileset readset.
+ 9404: 0.001: Creating fileset readset...
+ 9404: 0.064: Preallocated 100 of 100 of fileset readset in 1 seconds
+ 9404: 0.064: waiting for fileset pre-allocation to finish
+ 9406: 0.064: Starting 1 reader instances
+ 9407: 0.065: Starting 8 readerthread threads
+ 9404: 1.066: Running...
+ 9404: 31.068: Run took 30 seconds...
+ 9404: 31.069: Per-Operation Breakdown
+close1               383727ops    12790ops/s   0.0mb/s      0.0ms/op      133us/op-cpu [0ms - 7ms]
+read1                383727ops    12790ops/s 12476.7mb/s      0.4ms/op     1819us/op-cpu [0ms - 33ms]
+open1                383733ops    12790ops/s   0.0mb/s      0.0ms/op      162us/op-cpu [0ms - 11ms]
+ 9404: 31.069: IO Summary: 1151187 ops, 38369.800 ops/s, (12790/0 r/w), 12476.7mb/s,    313us cpu/op,   0.4ms latency
+ 9404: 31.069: Shutting down processes

@@ -1,0 +1,5 @@
+test_type,num_files,size_mb,share_percent,before_kb,after_kb,saving_kb,saving_pct
+single,1,64,10,3083352,3087804,-4452,0
+single,1,64,20,3083040,3073024,10016,0
+single,1,64,30,3082932,3066360,16572,0
+single,1,64,40,3083096,3059824,23272,0

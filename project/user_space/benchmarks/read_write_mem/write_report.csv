@@ -1,0 +1,4 @@
+size,mode,%shared,avg_ms
+64,normal_seq,NA,.42614091820000000000
+64,normal_rand,NA,.44582598220000000000
+64,shared_seq,10,.42166487100000000000

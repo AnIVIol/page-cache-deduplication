@@ -14,12 +14,12 @@
 set -e
 
 GEN_BIN="${GEN_BIN:-./gen_files}"
-SCANNER_KO="${SCANNER_KO:-../modules/scanner.ko}"
+SCANNER_KO="${SCANNER_KO:-../../../modules/scanner.ko}"
 REPORT="truncate_report.csv"
 WORK_DIR="${WORK_DIR:-/tmp/bench_truncate}"
 
-SIZES=(512)
-SHARES=(0 30 60 90)
+SIZES=(64 128 256)
+SHARES=(30 60 90)
 GROUPS_LIST=(1 3)
 RUNS=1
 NUM_FILES=4
@@ -166,7 +166,6 @@ sleep 1                         # give dedup time to settle
 
 ue_before=$(unevict_kb)
 echo "  Unevictable after dedup: ${ue_before} kB"
-echo "$DIR/file_0.bin" | sudo tee /sys/kernel/pagecache_inspector/filename_print
 errs=0
 for r in $(seq 1 $RUNS); do
     F="$DIR/file_$((r-1)).bin"

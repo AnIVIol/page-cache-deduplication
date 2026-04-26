@@ -1,0 +1,18 @@
+Filebench Version 1.4.9.1
+ 7707: 0.000: Allocated 170MB of shared memory
+ 7707: 0.001: Creating/pre-allocating files and filesets
+ 7707: 0.001: Fileset readset: 100 files, 0 leafdirs, avg dir width = 10, avg dir depth = 2.0, 97.553MB
+ 7707: 0.001: Re-using fileset readset.
+ 7707: 0.001: Creating fileset readset...
+ 7707: 0.063: Preallocated 100 of 100 of fileset readset in 1 seconds
+ 7707: 0.063: waiting for fileset pre-allocation to finish
+ 7709: 0.063: Starting 1 reader instances
+ 7710: 0.064: Starting 8 readerthread threads
+ 7707: 1.065: Running...
+ 7707: 31.067: Run took 30 seconds...
+ 7707: 31.067: Per-Operation Breakdown
+close1               397305ops    13242ops/s   0.0mb/s      0.0ms/op      132us/op-cpu [0ms - 10ms]
+read1                397305ops    13242ops/s 12918.6mb/s      0.4ms/op     1720us/op-cpu [0ms - 28ms]
+open1                397311ops    13243ops/s   0.0mb/s      0.0ms/op      161us/op-cpu [0ms - 10ms]
+ 7707: 31.067: IO Summary: 1191921 ops, 39727.613 ops/s, (13242/0 r/w), 12918.6mb/s,    302us cpu/op,   0.4ms latency
+ 7707: 31.068: Shutting down processes
