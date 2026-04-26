@@ -7,6 +7,10 @@ sysfs interface, and verifies byte-level data integrity using on a per byte basi
 
 ---
 
+## Test Description
+
+Each directory has its own README describing the testing feature of the suite
+
 ## Quick Start
 
 ```bash
