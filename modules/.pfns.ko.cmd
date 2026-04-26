@@ -1,0 +1,1 @@
+cmd_/home/cs614/project/modules/pfns.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/cs614/project/modules/pfns.ko /home/cs614/project/modules/pfns.o /home/cs614/project/modules/pfns.mod.o;  true

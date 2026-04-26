@@ -1,0 +1,9 @@
+CompileFlags:
+  Add:
+    -Wno-unknown-warning-option
+    -Wno-unused-command-line-argument
+    -Wno-ignored-optimization-argument
+    -ferror-limit=0
+    -D__KERNEL__
+    -DKBUILD_MODNAME=\"base_module\"
+
