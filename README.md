@@ -45,14 +45,18 @@ This artifact implements a page-cache deduplication mechanism in the Linux Kerne
    ```bash
    tar -xf linux-6.1.4.tar.xz
    mv linux-6.1.4 linux_base
-   cd linux_base
    ```
 2. Apply the provided patch:
    ```bash
-   unzip ../final.zip
-   patch -p0 < ../final.patch
+   unzip final.zip
+   patch -p0 < final.patch
    ```
-3. Configure and build:
+   Agree with ```y``` to all prompts
+3. Add your own config file or copy ours
+   ```
+   cp .config linux_base/.
+   ```
+4. Configure and build (Agree to the prompt that asks if dedup module has to be added):
    ```bash
    make oldconfig
    make -j2
