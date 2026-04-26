@@ -13,7 +13,7 @@ This artifact implements a page-cache deduplication mechanism in the Linux Kerne
     - `ok.sh`: Automation script to build and reload modules.
 - **`project/user_space/`**: Testing and benchmarking suite.
     - **`manual_testing/`**: Utilities for step-by-step verification (`generate_files`, `write_offset`, `write_test`).
-    - **`testcases/`**: Automated functional scripts (`cp_ln`, `fio_scripts`).
+    - **`testcases/`**: Automated functional scripts (`cp_ln`, `fio_scripts`). There is a [README](project/user_space/testcases/README.md) in this directory
     - **`benchmarks/`**: Performance measurement suites.
         - `profiling_and_filebench/`: Benchmarks using Filebench and CPU profiling.
         - `read_write_mem/`: Targeted memory savings and I/O latency benchmarks.
