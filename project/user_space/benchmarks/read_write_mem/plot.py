@@ -26,7 +26,7 @@ for test_type in mem["test_type"].unique():
     plt.axhline(0)
     plt.xlabel("share_percent")
     plt.ylabel("saving_kb")
-    plt.title(f"Memory saving vs sharing ({test_type})")
+    plt.title(f"Memory saving before and after merging({test_type} files)")
     plt.legend()
     plt.tight_layout()
     plt.savefig(OUTDIR / f"mem_{test_type}.png")
@@ -34,76 +34,115 @@ for test_type in mem["test_type"].unique():
 
 
 # -------------------------
-# 2) READ PLOTS
+# 2) READ PLOTS (FINAL FIX)
 # -------------------------
 
-# Clean normal vs shared labels
-read["type"] = read["file_type"].fillna("normal")
+for size in sorted(read["size"].unique()):
+    plt.figure()
 
-# ---- (A) Trend: shared performance vs %shared ----
-shared = read[read["file_type"].str.contains("shared", na=False)]
+    s = read[read["size"] == size]
 
-for size in sorted(shared["size"].unique()):
-    s = shared[shared["size"] == size]
+    shared = s[s["file_type"].str.contains("shared", na=False)]
+    normal = s[s["file_type"].str.contains("normal", na=False)]
 
-    for mode in s["file_type"].unique():
-        sub = s[s["file_type"] == mode].sort_values("%shared")
-        plt.plot(sub["%shared"], sub["avg_ms"], marker='o', label=mode)
+    color_map = {}
+
+    # ---- Plot shared curves ----
+    for mode in sorted(shared["file_type"].unique()):
+        sub = shared[shared["file_type"] == mode].sort_values("%shared")
+
+        line, = plt.plot(sub["%shared"], sub["avg_ms"], marker='o', label=mode)
+        color_map[mode] = line.get_color()
+
+    # ---- Plot baselines (mean of normal) ----
+    for mode in sorted(normal["file_type"].unique()):
+        sub = normal[normal["file_type"] == mode]
+
+        if sub.empty:
+            continue
+
+        y = sub["avg_ms"].mean()
+
+        # map normal → corresponding shared
+        if "rand" in mode:
+            shared_key = "shared_rand"
+        else:
+            shared_key = "shared"
+
+        color = color_map.get(shared_key, None)
+
+        plt.axhline(
+            y=y,
+            linestyle="--",
+            color=color,
+            label=f"{mode} (baseline)"
+        )
 
     plt.xlabel("%shared")
     plt.ylabel("avg_ms")
-    plt.title(f"Read latency vs sharing (size={size})")
+    plt.title(f"Read latency for seq. and rand. reads for normal and shared file \n(size={size} MB)")
     plt.legend()
     plt.tight_layout()
     plt.savefig(OUTDIR / f"read_trend_{size}.png")
-    plt.clf()
-
-
-# ---- (B) Bar: normal vs random vs shared ----
-agg = read.groupby("file_type")["avg_ms"].mean().sort_values()
-
-plt.bar(agg.index.astype(str), agg.values)
-plt.ylabel("avg_ms")
-plt.title("Read performance comparison (lower is better)")
-plt.xticks(rotation=30)
-plt.tight_layout()
-plt.savefig(OUTDIR / "read_comparison.png")
-plt.clf()
+    plt.close()
 
 
 # -------------------------
-# 3) WRITE PLOTS
+# 3) WRITE PLOTS (FIXED)
 # -------------------------
 
-# ---- (A) Trend: shared vs %shared ----
 shared = write[write["mode"].str.contains("shared", na=False)]
+normal = write[write["mode"].str.contains("normal", na=False)]
 
-for size in sorted(shared["size"].unique()):
-    s = shared[shared["size"] == size]
+for size in sorted(write["size"].unique()):
+    plt.figure()
 
-    for mode in s["mode"].unique():
-        sub = s[s["mode"] == mode].sort_values("%shared")
-        plt.plot(sub["%shared"], sub["avg_ms"], marker='o', label=mode)
+    s_shared = shared[shared["size"] == size]
+    s_normal = normal[normal["size"] == size]
+
+    # store colors so baseline matches line color
+    color_map = {}
+
+    # ---- Plot shared curves ----
+    for mode in sorted(s_shared["mode"].unique()):
+        sub = s_shared[s_shared["mode"] == mode].sort_values("%shared")
+
+        line, = plt.plot(sub["%shared"], sub["avg_ms"], marker='o', label=mode)
+        color_map[mode] = line.get_color()
+
+    # ---- Plot baselines (normal) ----
+    for mode in sorted(s_normal["mode"].unique()):
+        sub = s_normal[s_normal["mode"] == mode]
+
+        if sub.empty:
+            continue
+
+        y = sub["avg_ms"].mean()
+
+        # map normal -> corresponding shared
+        if "seq" in mode:
+            shared_key = "shared_seq"
+        elif "rand" in mode:
+            shared_key = "shared_rand"
+        else:
+            continue
+
+        color = color_map.get(shared_key, None)
+
+        plt.axhline(
+            y=y,
+            linestyle="--",
+            color=color,
+            label=f"{mode} (baseline)"
+        )
 
     plt.xlabel("%shared")
     plt.ylabel("avg_ms")
-    plt.title(f"Write latency vs sharing (size={size})")
+    plt.title(f"Write latency for sequential and random reads for normal and shared file \nsize={size} MB)")
     plt.legend()
     plt.tight_layout()
     plt.savefig(OUTDIR / f"write_trend_{size}.png")
-    plt.clf()
-
-
-# ---- (B) Bar: overall write modes ----
-agg = write.groupby("mode")["avg_ms"].mean().sort_values()
-
-plt.bar(agg.index.astype(str), agg.values)
-plt.ylabel("avg_ms")
-plt.title("Write performance comparison (lower is better)")
-plt.xticks(rotation=30)
-plt.tight_layout()
-plt.savefig(OUTDIR / "write_comparison.png")
-plt.clf()
+    plt.close()
 
 
 print(f"All useful plots saved in: {OUTDIR.resolve()}")
